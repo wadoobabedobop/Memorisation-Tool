@@ -1,12 +1,12 @@
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 @dataclass
 class Flashcard:
     question: str
     answer: str
     box: int = 1
-    last_reviewed: datetime = field(default_factory=datetime.utcnow)
+    last_reviewed: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
     def next_review(self) -> datetime:
         intervals = {

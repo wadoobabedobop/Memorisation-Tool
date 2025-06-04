@@ -16,4 +16,10 @@ Review due cards:
 python -m memorisation_tool review
 ```
 
+Run the package directly with `-m` to get help:
+
+```bash
+python -m memorisation_tool --help
+```
+
 Cards are stored in `cards.json` in the current directory.

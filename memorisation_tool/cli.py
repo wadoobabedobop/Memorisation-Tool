@@ -1,5 +1,5 @@
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 
 from .storage import load_cards, save_cards
 from .models import Flashcard
@@ -14,7 +14,7 @@ def add_card(question: str, answer: str) -> None:
 
 def review_cards() -> None:
     cards = load_cards()
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     due_cards = [c for c in cards if c.next_review() <= now]
     if not due_cards:
         print('No cards due for review.')
